@@ -1,17 +1,19 @@
 **THIS FORK IS A CUSTOMIZED VERSION OF facebookresearch/audiocraft.**<br>
-It features a GUI created with [cables.gl](https://cables.gl).<br>
+It features a GUI created with [cables.gl](https://cables.gl):<br>
+Check out the patch here: https://cables.gl/p/0YTLAD<br>
+
 
 Tested and runs locally on Mac (ARM/M1) using CPU for generation.<br>
 
 ## INSTALLATION
 
 1. Clone this repository.
-2. Follow the original AudioCraft installation steps as described in the sections below.
-3. Make sure, that the root folder is named "audiocraft-main-cablesGUI"
+2. Follow the original AudioCraft installation steps as described in the original readme sections below.
+3. Make sure, that the root folder is named "audiocraft-cablesGUI". Rename, if necessary.
 4. In terminal:
 
 ```shell
-cd audiocraft-main-cablesGUI # make sure to have the correct and full path, e.g. /Users/YOUR.USERNAME/Documents/audiocraft-main-cablesGUI
+cd audiocraft-cablesGUI # make sure to have the correct and full path, e.g. /Users/YOUR.USERNAME/Documents/audiocraft-cablesGUI
 ./audiocables_start.sh # this starts up the necessary servers.
 
 ```
@@ -19,28 +21,42 @@ cd audiocraft-main-cablesGUI # make sure to have the correct and full path, e.g.
 If an permission error occurs, change the permissions for the .sh files first, then try step 4 again:
 ```shell
 
-cd audiocraft-main-cablesUI
+cd audiocraft-cablesGUI
 chmod +x audiocables_start.sh
 chmod +x audiocables_kill.sh
 ```
 
 
-5. When the terminal shows, that the flask server is running and finally the http.server is serving at localhost:8000, open then WebUI by opening http://localhost:8000 in a browser window.
-6. To kill all processes:
+5. When the terminal shows, that both the flask server is running and finally the http.server is serving at localhost:8000, open then WebUI by opening http://localhost:8000 in a browser window.
+6. Use the webGUI to generate audio files, load models and playback the generated files.
+7. To kill all processes and servers:
    
 ```shell
-cd audiocraft-main-cablesGUI
+cd audiocraft-cablesGUI
 ./audiocables_kill.sh
 ```
 
 ## USAGE
 
-1. In the Sidebar, **select a model** first! If you select/use a model for the first time, it will be downloaded from hugginface. On Mac, the models will be stored by default under "/Users/peter.parker/.cache/huggingface/hub/".
+1. In the Sidebar, **select a model** first! If you select/use a model for the first time, it will be downloaded from hugginface. On Mac, the models will be stored by default under "/Users/YOUR.USERNAME/.cache/huggingface/hub/".
 2. Type a prompt and set the values, hit generate. In the terminal, first the model status will be displayed (e. g. "loading model..."), then a counter appears after a little while to log the audio gemeratiom process. The generated files will be available in a newly created folder "output_cables", along with a .json file containing the prompt and value details per audio-file.
 3. Play back the last generated file, or all filles in the "output_cables" folder, by activating the audio player from the cables sidebar GUI.
 4. That's it.
 
 For more infos about the values, please see the MusicGen documentation.
+
+## cables webGUI
+
+This is the cables webGUI patch: https://cables.gl/p/0YTLAD<br>
+Feel free to clone it, customize it and then exchange your new version with the default one in the repo. To do so, simply exchange all files inside
+the "cables_audiocraftAPI4" folder with the ones, you downloded from cables.<br>
+Hint: You can also avoid the startup shell script, and only start the flsk server by running:
+```shell
+cd audiocraft-cablesGUI
+python serverCables.py
+```
+This allows you to use the audiocraft network also while working in the cables.gl editor ;-)
+
 
 ## DISCLAIMER
 
