@@ -1,22 +1,22 @@
-THIS IS A CUSTOMIZED VERSION OF facebookresearch/audiocraft.<br>
+**THIS FORK IS A CUSTOMIZED VERSION OF facebookresearch/audiocraft.**<br>
 It features a GUI created with [cables.gl](https://cables.gl).<br>
 
-Tested and runs locally on ARM Mac (M1) using CPU for generation.<br>
+Tested and runs locally on Mac (ARM/M1) using CPU for generation.<br>
 
 ## INSTALLATION
 
 1. Clone this repository.
-2. Follow the AudioCraft installation steps as described below.
-3. Rename the root folder to "audiocraft-main-cablesUI"
-4. Open terminal and:
+2. Follow the original AudioCraft installation steps as described in the sections below.
+3. Make sure, that the root folder is named "audiocraft-main-cablesGUI"
+4. In terminal:
 
 ```shell
-cd audiocraft-main-cablesUI # make sure to have the correct and full path, e.g. /Users/peter.parker/Documents/audiocraft-main-cablesUI
+cd audiocraft-main-cablesGUI # make sure to have the correct and full path, e.g. /Users/YOUR.USERNAME/Documents/audiocraft-main-cablesGUI
 ./audiocables_start.sh # this starts up the necessary servers.
 
 ```
 
-4.b. If an permission error occurs, change the permissions first, then proceed:
+If an permission error occurs, change the permissions for the .sh files first, then try step 4 again:
 ```shell
 
 cd audiocraft-main-cablesUI
@@ -25,30 +25,35 @@ chmod +x audiocables_kill.sh
 ```
 
 
-
-5. When the terminal showed, that the flask server is running and finally the http.server is serving at localhost:8000, open then WebUI by opening localhost:8000 in a browser window.
+5. When the terminal shows, that the flask server is running and finally the http.server is serving at localhost:8000, open then WebUI by opening http://localhost:8000 in a browser window.
+6. To kill all processes:
+   
+```shell
+cd audiocraft-main-cablesGUI
+./audiocables_kill.sh
+```
 
 ## USAGE
 
-1. In the Sidebar, select a model. If you select/use it the first time, it will be downloaded from hugginface. On Mac, the models will be stored under "/Users/peter.parker/.cache/huggingface/hub/" by default.
-2. Type a prompt and set the values, hit generate. In the terminal, the counter should appear after a while to log the process. The generated files will be available in the newly created folder "output_cables".
-3. Play back the last generated file, or all filles in the "output_cables" folder.
-4. Done.
+1. In the Sidebar, **select a model** first! If you select/use a model for the first time, it will be downloaded from hugginface. On Mac, the models will be stored by default under "/Users/peter.parker/.cache/huggingface/hub/".
+2. Type a prompt and set the values, hit generate. In the terminal, first the model status will be displayed (e. g. "loading model..."), then a counter appears after a little while to log the audio gemeratiom process. The generated files will be available in a newly created folder "output_cables", along with a .json file containing the prompt and value details per audio-file.
+3. Play back the last generated file, or all filles in the "output_cables" folder, by activating the audio player from the cables sidebar GUI.
+4. That's it.
 
-For infos about the values, see the MusicGen documentation.
+For more infos about the values, please see the MusicGen documentation.
 
-## DISCALIMER
+## DISCLAIMER
 
-This project is shared as is. It is a highly customized version and way to use AudioCraft, and it was used to learn core concepts while creating it. 
-I am happy for feedback, but for the reason given above, support will be very limited.
+This project is shared as is. It is a highly customized version and a quite inidividual way to use AudioCraft. It was used to learn more about some core concepts while creating it. 
+I am happy for feedback and exchange, but for the reason given above, support will be very limited.
 
 ## ABOUT
 
 Everyhthing is kept in it's original state so far... what I added:<br>
-Audio generation is done by the generateaudio.py script.<br>
-The GUI is created inside cables_audiocraftAPI4, and served via the python http.server.<br>
-serverCables.py handles serving the necessay scripts and files, so the GUI can communicate via AJAX requests.<br>
-audiocables_start.sh and audiocables_kills.sh only handly starting/killing the processes.<br>
+Audio generation is done by the "generateaudio.py" script.<br>
+The webGUI is created inside "cables_audiocraftAPI4", that itself is served via the standard python http.server module.<br>
+"serverCables.py" handles serving the necessay scripts and files, so the webGUI can communicate via AJAX requests.<br>
+"audiocables_start.sh" and "audiocables_kill.sh" only handle starting/killing the processes.<br>
 
 
 
