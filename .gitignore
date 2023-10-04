@@ -1,3 +1,6 @@
+# cables audio output
+output_cables/
+
 # Byte-compiled / optimized / DLL files
 __pycache__
 *.py[cod]
