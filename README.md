@@ -1,3 +1,60 @@
+THIS IS A CUSTOMIZED VERSION OF facebookresearch/audiocraft.<br>
+It features a GUI created with [cables.gl](https://cables.gl).<br>
+
+Tested and runs locally on ARM Mac (M1) using CPU for generation.<br>
+
+## INSTALLATION
+
+1. Clone this repository.
+2. Follow the AudioCraft installation steps as described below.
+3. Rename the root folder to "audiocraft-main-cablesUI"
+4. Open terminal and:
+
+```shell
+cd audiocraft-main-cablesUI # make sure to have the correct and full path, e.g. /Users/peter.parker/Documents/audiocraft-main-cablesUI
+./audiocables_start.sh # this starts up the necessary servers.
+
+```
+
+4.b. If an permission error occurs, change the permissions first, then proceed:
+```shell
+
+cd audiocraft-main-cablesUI
+chmod +x audiocables_start.sh
+chmod +x audiocables_kill.sh
+```
+
+
+
+5. When the terminal showed, that the flask server is running and finally the http.server is serving at localhost:8000, open then WebUI by opening localhost:8000 in a browser window.
+
+## USAGE
+
+1. In the Sidebar, select a model. If you select/use it the first time, it will be downloaded from hugginface. On Mac, the models will be stored under "/Users/peter.parker/.cache/huggingface/hub/" by default.
+2. Type a prompt and set the values, hit generate. In the terminal, the counter should appear after a while to log the process. The generated files will be available in the newly created folder "output_cables".
+3. Play back the last generated file, or all filles in the "output_cables" folder.
+4. Done.
+
+For infos about the values, see the MusicGen documentation.
+
+## DISCALIMER
+
+This project is shared as is. It is a highly customized version and way to use AudioCraft, and it was used to learn core concepts while creating it. 
+I am happy for feedback, but for the reason given above, support will be very limited.
+
+## ABOUT
+
+Everyhthing is kept in it's original state so far... what I added:<br>
+Audio generation is done by the generateaudio.py script.<br>
+The GUI is created inside cables_audiocraftAPI4, and served via the python http.server.<br>
+serverCables.py handles serving the necessay scripts and files, so the GUI can communicate via AJAX requests.<br>
+audiocables_start.sh and audiocables_kills.sh only handly starting/killing the processes.<br>
+
+
+
+---
+
+
 # AudioCraft
 ![docs badge](https://github.com/facebookresearch/audiocraft/workflows/audiocraft_docs/badge.svg)
 ![linter badge](https://github.com/facebookresearch/audiocraft/workflows/audiocraft_linter/badge.svg)
@@ -24,7 +81,7 @@ We also recommend having `ffmpeg` installed, either through your system or Anaco
 ```bash
 sudo apt-get install ffmpeg
 # Or if you are using Anaconda or Miniconda
-conda install "ffmpeg<5" -c conda-forge
+conda install 'ffmpeg<5' -c  conda-forge
 ```
 
 ## Models
@@ -58,9 +115,7 @@ Yes! We provide the training code for [EnCodec](./docs/ENCODEC.md), [MusicGen](.
 
 #### Where are the models stored?
 
-Hugging Face stored the model in a specific location, which can be overriden by setting the `AUDIOCRAFT_CACHE_DIR` environment variable for the AudioCraft models.
-In order to change the cache location of the other Hugging Face models, please check out the [Hugging Face Transformers documentation for the cache setup](https://huggingface.co/docs/transformers/installation#cache-setup).
-Finally, if you use a model that relies on Demucs (e.g. `musicgen-melody`) and want to change the download location for Demucs, refer to the [Torch Hub documentation](https://pytorch.org/docs/stable/hub.html#where-are-my-downloaded-models-saved).
+Hugging Face stored the model in a specific location, which can be overriden by setting the `AUDIOCRAFT_CACHE_DIR` environment variable.
 
 
 ## License
