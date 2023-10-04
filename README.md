@@ -2,8 +2,11 @@
 It features a GUI created with [cables.gl](https://cables.gl):<br>
 Check out the patch here: https://cables.gl/p/0YTLAD<br>
 
-
 Tested and runs locally on Mac (ARM/M1) using CPU for generation.<br>
+
+Feel free to check out music created with this piepline:<br>
+https://ansoot.hartmanntobias.de
+https://ansoot.bandcamp.com<br>
 
 ## INSTALLATION
 
