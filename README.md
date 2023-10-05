@@ -1,6 +1,7 @@
 **THIS FORK IS A CUSTOMIZED VERSION OF facebookresearch/audiocraft.**<br>
 It features a GUI created with [cables.gl](https://cables.gl):<br>
 Check out the patch here: https://cables.gl/p/0YTLAD<br>
+Watch a demo here: https://youtu.be/8LK4EkXLG-U<br>
 
 Tested and runs locally on Mac (ARM/M1) using CPU for generation.<br>
 
